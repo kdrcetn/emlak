@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emircan Kaydu - Admin Paneli</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* TEMEL STİLLER */
+      :root {
+        --primary: #0056a6;
+        --secondary: #0073ce;
+        --light: #f5f5f5;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background: var(--light);
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* GİRİŞ BÖLÜMÜ */
+      #loginSection {
+        max-width: 500px;
+        margin: 100px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      #loginSection h2 {
+        color: var(--primary);
+        margin-bottom: 30px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #555;
+      }
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+      }
+      .btn:hover {
+        background: var(--secondary);
+      }
+
+      /* ADMIN PANELİ */
+      #adminPanel {
+        display: none;
+        padding-top: 30px;
+      }
+      .property-form {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+      }
+      .property-form h2 {
+        color: var(--primary);
+        margin-top: 0;
+      }
+      .property-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+      .property-table th {
+        background: var(--primary);
+        color: white;
+        padding: 15px;
+        text-align: left;
+      }
+      .property-table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #eee;
+      }
+      .property-table tr:hover {
+        background: #f9f9f9;
+      }
+      .edit-btn,
+      .delete-btn {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .edit-btn {
+        background: #4caf50;
+        color: white;
+      }
+      .delete-btn {
+        background: #f44336;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- GİRİŞ BÖLÜMÜ -->
+      <div id="loginSection">
+        <h2><i class="fas fa-lock"></i> Admin Girişi</h2>
+        <div class="form-group">
+          <label for="adminPass">Şifre</label>
+          <input
+            type="password"
+            id="adminPass"
+            placeholder="admin123"
+            required
+          />
+        </div>
+        <button id="loginBtn" class="btn">
+          <i class="fas fa-sign-in-alt"></i> Giriş Yap
+        </button>
+      </div>
+
+      <!-- ADMIN PANELİ -->
+      <div id="adminPanel">
+        <!-- İLAN EKLEME FORMU -->
+        <div class="property-form">
+          <h2 id="formTitle">
+            <i class="fas fa-plus-circle"></i> Yeni İlan Ekle
+          </h2>
+          <form id="propertyForm">
+            <div class="form-group">
+              <label for="title">Başlık</label>
+              <input type="text" id="title" required />
+            </div>
+            <div class="form-group">
+              <label for="location">Konum</label>
+              <input type="text" id="location" required />
+            </div>
+            <div class="form-group">
+              <label for="type">İlan Türü</label>
+              <select id="type" class="form-control" required>
+                <option value="Satılık">Satılık</option>
+                <option value="Kiralık">Kiralık</option>
+                <option value="Arsa">Arsa</option>
+                <option value="İşyeri">İşyeri</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="price">Fiyat</label>
+              <input type="text" id="price" required />
+            </div>
+            <div class="form-group">
+              <label for="image">Resim URL</label>
+              <input
+                type="text"
+                id="image"
+                placeholder="assets/images/örnek.jpg"
+              />
+            </div>
+            <button type="submit" id="submitBtn" class="btn">
+              <i class="fas fa-save"></i> Kaydet
+            </button>
+            <button
+              type="button"
+              id="cancelBtn"
+              class="btn"
+              style="display: none; background: #ccc; margin-top: 10px"
+            >
+              <i class="fas fa-times"></i> Vazgeç
+            </button>
+          </form>
+        </div>
+
+        <!-- İLAN LİSTESİ -->
+        <h2><i class="fas fa-list"></i> Mevcut İlanlar</h2>
+        <table class="property-table">
+          <thead>
+            <tr>
+              <th>Başlık</th>
+              <th>Konum</th>
+              <th>Tür</th>
+              <th>Fiyat</th>
+              <th>İşlemler</th>
+            </tr>
+          </thead>
+          <tbody id="propertiesList">
+            <!-- İlanlar buraya JavaScript ile eklenecek -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT DOSYALARI -->
+    <script src="properties.js"></script>
+    <script src="assets/js/admin.js"></script>
+
+    <!-- Hemen çalıştırılacak script -->
+    <script>
+      // Sayfa yüklendiğinde giriş durumunu kontrol et
+      document.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem("adminLoggedIn") === "true") {
+          document.getElementById("loginSection").style.display = "none";
+          document.getElementById("adminPanel").style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>

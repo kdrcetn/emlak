@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emircan Kaydu - Dialog Cadde Gayrimenkul Danışmanı</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #0056a6;
+        --secondary-color: #0073ce;
+        --light-color: #ff6b00;
+        --dark-color: #f5f5f5;
+        --accent-color: #333333;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 100px;
+        margin-right: 40px;
+      }
+
+      .logo-text h1 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        font-weight: 900;
+      }
+
+      .logo-text span {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        display: block;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 30px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary-color);
+      }
+
+      .mobile-menu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid var(--secondary-color);
+        animation: fadeIn 2.5s ease-in-out;
+      }
+
+      .btn:hover {
+        background-color: transparent;
+        color: var(--secondary-color);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        margin-left: 15px;
+      }
+
+      .btn-outline:hover {
+        background-color: white;
+        color: var(--primary-color);
+      }
+
+      /* About Section */
+      .about {
+        padding: 100px 0;
+        background-color: white;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .about-img {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s;
+      }
+
+      .about-img:hover img {
+        transform: scale(1.05);
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+        color: #666;
+      }
+
+      .about-text ul {
+        margin-bottom: 30px;
+        list-style: none;
+      }
+
+      .about-text ul li {
+        margin-bottom: 10px;
+        position: relative;
+        padding-left: 25px;
+      }
+
+      .about-text ul li::before {
+        content: "\f00c";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--secondary-color);
+        position: absolute;
+        left: 0;
+        top: 2px;
+      }
+
+      /* Services Section */
+      .services {
+        padding: 100px 0;
+        background-color: #f5f7fa;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .service-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .service-card:hover .service-img img {
+        transform: scale(1.1);
+      }
+
+      .service-content {
+        padding: 25px;
+      }
+
+      .service-content h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 15px;
+      }
+
+      .service-content p {
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+      }
+
+      /* Properties Section */
+      .properties {
+        padding: 100px 0;
+        background-color: white;
+      }
+
+      .properties-filter {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        background: none;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #666;
+        transition: all 0.3s;
+        border-radius: 30px;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      .properties-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .property-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .property-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .property-img {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .property-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .property-card:hover .property-img img {
+        transform: scale(1.1);
+      }
+
+      .property-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .property-content {
+        padding: 25px;
+      }
+
+      .property-content h3 {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      .property-content p.location {
+        color: #666;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .property-content p.location i {
+        margin-right: 5px;
+        color: var(--secondary-color);
+      }
+
+      .property-features {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .feature {
+        text-align: center;
+      }
+
+      .feature i {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .feature span {
+        display: block;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .property-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .price {
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        font-weight: 700;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        padding: 100px 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+          url("https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1467&q=80");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+        text-align: center;
+      }
+
+      .testimonials .section-title h2 {
+        color: white;
+      }
+
+      .testimonials .section-title h2::after {
+        background-color: white;
+      }
+
+      .testimonial-slider {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .testimonial {
+        padding: 30px;
+      }
+
+      .testimonial-text {
+        font-size: 1.2rem;
+        font-style: italic;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .testimonial-text::before,
+      .testimonial-text::after {
+        content: '"';
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.2);
+        position: absolute;
+      }
+
+      .testimonial-text::before {
+        top: -20px;
+        left: -10px;
+      }
+
+      .testimonial-text::after {
+        bottom: -40px;
+        right: -10px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .author-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 20px;
+        border: 3px solid var(--secondary-color);
+      }
+
+      .author-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .author-info h4 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .author-info p {
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 100px 0;
+        background-color: white;
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 50px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .contact-info h3 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+      }
+
+      .info-icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--light-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+      }
+
+      .info-text h4 {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        margin-bottom: 5px;
+      }
+
+      .info-text p,
+      .info-text a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .info-text a:hover {
+        color: var(--secondary-color);
+      }
+
+      .social-links {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 40px;
+        height: 40px;
+        background-color: var(--light-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: var(--primary-color);
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: var(--secondary-color);
+        color: white;
+      }
+
+      .contact-form {
+        background-color: #f5f7fa;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-form h3 {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+      }
+
+      textarea.form-control {
+        resize: vertical;
+        min-height: 150px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 50px 0 20px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-col h4 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-col h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--secondary-color);
+      }
+
+      .footer-col p {
+        margin-bottom: 15px;
+        color: #ccc;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+        list-style: none;
+      }
+
+      .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+        display: block;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary-color);
+        padding-left: 5px;
+      }
+
+      .footer-contact li {
+        margin-bottom: 15px;
+        list-style: none;
+        display: flex;
+        align-items: flex-start;
+        color: #ccc;
+      }
+
+      .footer-contact i {
+        margin-right: 10px;
+        color: var(--secondary-color);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-img,
+        .about-text {
+          flex: none;
+          width: 100%;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background-color: white;
+          flex-direction: column;
+          padding: 20px 0;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+
+        nav ul li {
+          margin: 0;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .btn {
+          padding: 10px 20px;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero-btns {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .btn-outline {
+          margin-left: 0;
+          margin-top: 15px;
+        }
+
+        .property-features {
+          flex-wrap: wrap;
+        }
+
+        .feature {
+          width: 50%;
+          margin-bottom: 15px;
+        }
+
+        .property-price {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .price {
+          margin-bottom: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img src="assets/images/emlaklogo.jpg" alt="Dialog Cadde Logo" />
+          <div class="logo-text">
+            <h1>Emircan Kaydu Dialog Cadde Gayrimenkul</h1>
+            <span></span>
+          </div>
+        </div>
+        <nav>
+          <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+          </div>
+          <ul id="nav-menu">
+            <li><a href="#home">Anasayfa</a></li>
+            <li><a href="#about">Hakkımda</a></li>
+            <li><a href="#services">Hizmetler</a></li>
+            <li><a href="#properties">Emlak Portföyü</a></li>
+            <li><a href="#contact">İletişim</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Hayalinizdeki Evi Bulmanız İçin Buradayım</h1>
+          <p>
+            Kocaeli'nin en güzel semtlerinde, en uygun fiyatlarla hayalinizdeki
+            evi bulmanız için profesyonel gayrimenkul danışmanlık hizmeti
+            sunuyorum.
+          </p>
+          <div class="hero-btns">
+            <a href="#properties" class="btn">Emlak Portföyü</a>
+            <a href="#contact" class="btn btn-outline">İletişim</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Hakkımda</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-img">
+            <img src="assets/images/emirfoto1.jfif" alt="Emircan Kaydu" />
+          </div>
+          <div class="about-text">
+            <h3>Profesyonel Gayrimenkul Danışmanı</h3>
+            <p>
+              Merhaba, ben Emircan Kaydu. Dialog Cadde Gayrimenkul bünyesinde
+              uzun yıllardır gayrimenkul danışmanlığı yapmaktayım. Müşteri
+              memnuniyetini her şeyin üzerinde tutan, dürüst ve şeffaf çalışma
+              prensipleriyle hizmet veriyorum.
+            </p>
+            <p>
+              İstanbul'un tüm ilçelerinde konut, işyeri, arsa gibi tüm
+              gayrimenkul yatırımlarınız için profesyonel danışmanlık hizmeti
+              sunuyorum. Hayalinizdeki mülkü bulmanız ve en doğru yatırımı
+              yapmanız için tüm bilgi birikimim ve tecrübemle yanınızdayım.
+            </p>
+            <ul>
+              <li>5+ Yıllık Deneyim</li>
+              <li>150+ Mutlu Müşteri</li>
+              <li>Kocaeli'nin Tüm İlçelerinde Hizmet</li>
+              <li>7/24 Ulaşılabilirlik</li>
+              <li>Dürüst ve Şeffaf Çalışma</li>
+            </ul>
+            <a href="#contact" class="btn">İletişime Geçin</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Hizmetlerimiz</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-img">
+              <img
+                src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Konut Satış Pazarlama Ve Kiralama"
+              />
+            </div>
+            <div class="service-content">
+              <div class="service-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <h3>Konut Satış Pazarlama Ve Kiralama</h3>
+              <p>
+                İstanbul'un her bölgesinde lüks dairelerden ekonomik konutlara
+                kadar geniş yelpazede konut satış ve pazarlama hizmeti
+                sunuyoruz.
+              </p>
+              <a href="#contact" class="btn">Detaylı Bilgi</a>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img">
+              <img
+                src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="İşyeri Kiralama"
+              />
+            </div>
+            <div class="service-content">
+              <div class="service-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3>İşyeri Kiralama</h3>
+              <p>
+                Ticari faaliyetleriniz için en uygun lokasyonlarda,
+                ihtiyaçlarınıza özel işyeri kiralama hizmetleri sunuyoruz.
+              </p>
+              <a href="#contact" class="btn">Detaylı Bilgi</a>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-img">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Kat Karşılığı Anlaşma"
+              />
+            </div>
+            <div class="service-content">
+              <div class="service-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Kat Karşılığı Anlaşma</h3>
+              <p>
+                Gayrimenkulünüzün gerçek piyasa değerini belirlemek için
+                profesyonel değerleme hizmeti sunuyoruz.
+              </p>
+              <a href="#contact" class="btn">Detaylı Bilgi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties" id="properties">
+      <div class="container">
+        <div class="section-title">
+          <h2>Emlak Portföyü</h2>
+        </div>
+        <div class="properties-filter">
+          <button class="filter-btn active" data-filter="all">Tümü</button>
+          <button class="filter-btn" data-filter="satilik">Satılık</button>
+          <button class="filter-btn" data-filter="arsa">Arsa</button>
+          <button class="filter-btn" data-filter="isyeri">İşyeri</button>
+        </div>
+        <div class="properties-grid">
+          <div class="property-card" data-category="satilik">
+            <div class="property-img">
+              <img src="assets/images/kartalyakacık.png" alt="Lüks Daire" />
+              <span class="property-badge">Satılık</span>
+            </div>
+            <div class="property-content">
+              <h3>Kartal'da Deniz Manzaralı Daire</h3>
+              <p class="location">
+                <i class="fas fa-map-marker-alt"></i> Yakacık, Kartal, İstanbul
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-bed"></i>
+                  <span>3+1</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-bath"></i>
+                  <span>1 Banyo</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-vector-square"></i>
+                  <span>130 m²</span>
+                </div>
+              </div>
+              <div class="property-price">
+                <div class="price">4.500.000 TL</div>
+                <a href="#contact" class="btn">Detaylar</a>
+              </div>
+            </div>
+          </div>
+          <div class="property-card" data-category="Satılık">
+            <div class="property-img">
+              <img src="assets/images/şişlidaire.png" alt="Modern Daire" />
+              <span class="property-badge">Satılık</span>
+            </div>
+            <div class="property-content">
+              <h3>Bomonti Anthill Vatandaşlığa Uygun Daire</h3>
+              <p class="location">
+                <i class="fas fa-map-marker-alt"></i> Şişli, İstanbul
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-bed"></i>
+                  <span>1+1</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-bath"></i>
+                  <span>1 Banyo</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-vector-square"></i>
+                  <span>90 m²</span>
+                </div>
+              </div>
+              <div class="property-price">
+                <div class="price">15.000.000 TL</div>
+                <a href="#contact" class="btn">Detaylar</a>
+              </div>
+            </div>
+          </div>
+          <div class="property-card" data-category="Satılık">
+            <div class="property-img">
+              <img src="assets/images/tuzla.png" alt="DUMANKAYA ADRES Daire" />
+              <span class="property-badge">Satılık</span>
+            </div>
+            <div class="property-content">
+              <h3>Dumankaya Lobide Yatırımlık Daire</h3>
+              <p class="location">
+                <i class="fas fa-map-marker-alt"></i> Aydınlı, Tuzla, İstanbul
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-door-open"></i>
+                  <span>1+0 </span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-restroom"></i>
+                  <span>1 WC</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-vector-square"></i>
+                  <span>45 m²</span>
+                </div>
+              </div>
+              <div class="property-price">
+                <div class="price">2.550.000 TL</div>
+                <a href="#contact" class="btn">Detaylar</a>
+              </div>
+            </div>
+          </div>
+          <div class="property-card" data-category="Devren">
+            <div class="property-img">
+              <img src="assets/images/waffle.png" alt="Devren Dükkan" />
+              <span class="property-badge">Devren Dükkan</span>
+            </div>
+            <div class="property-content">
+              <h3>Gebze'nin İlk Waffle Dükkanı</h3>
+              <p class="location">
+                <i class="fas fa-map-marker-alt"></i> Gebze, Kocaeli
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-map"></i>
+                  <span>İmar Uygun</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-restroom"></i>
+                  <span>2 WC</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-vector-square"></i>
+                  <span>100 m²</span>
+                </div>
+              </div>
+              <div class="property-price">
+                <div class="price">2.750.000 TL</div>
+                <a href="#contact" class="btn">Detaylar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px">
+          <a href="#contact" class="btn"
+            >Daha Fazla Emlak İçin İletişime Geçin</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>Müşteri Yorumları</h2>
+        </div>
+        <div class="testimonial-slider">
+          <div class="testimonial">
+            <div class="testimonial-text">
+              <p>
+                Emircan Bey sayesinde hayalimdeki evi buldum. Profesyonel
+                yaklaşımı, sabrı ve gayrimenkul bilgisi sayesinde çok
+                zorlanmadan istediğim özelliklerde bir daire buldum. Tüm süreç
+                boyunca bize rehberlik etti. Kesinlikle tavsiye ederim.
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <img src="assets/images/kadir.jpeg" alt="Kadir Çetin." />
+              </div>
+              <div class="author-info">
+                <h4>Kadir Ç.</h4>
+                <p>Müşteri</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-text">
+              <p>
+                Yurt dışından İstanbul'da yatırım yapmak istiyordum. Emircan
+                Bey'in profesyonel rehberliği olmasaydı bu süreç çok zorlu
+                geçebilirdi. Piyasa bilgisi ve dürüst çalışma prensipleri
+                sayesinde güvenle yatırım yapabildim. Teşekkürler!
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <img src="assets/images/yusuf.png" alt="Mehmet T." />
+              </div>
+              <div class="author-info">
+                <h4>Mehmet T.</h4>
+                <p>Yatırımcı</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial-text">
+              <p>
+                İş yerimi taşımak için uygun bir mekan arıyordum. Emircan Bey'in
+                önerdiği yer tam da ihtiyaçlarımıza uygun çıktı. Süreç boyunca
+                her türlü detayla ilgilendi ve işlerin sorunsuz ilerlemesini
+                sağladı. Çok memnun kaldım.
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-img">
+                <img src="assets/images/imdat.png" alt="İmdat K." />
+              </div>
+              <div class="author-info">
+                <h4>İmdat K.</h4>
+                <p>İşletme Sahibi</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>İletişim</h2>
+        </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>İletişim Bilgileri</h3>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-text">
+                <h4>Adres</h4>
+                <p>Dialog Cadde Gayrimenkul, Gebze ,Kocaeli</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="info-text">
+                <h4>Telefon</h4>
+                <a href="tel:+90 543 243 41 21">+90 543 243 41 21</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-text">
+                <h4>Portföyler</h4>
+                <a
+                  href="https://www.sahibinden.com/arama?utm_campaign=sahibinden_paylas&utm_medium=arama_sonuc&userId=bHKz3OVydOLH7F3kNgSjnBA&utm_source=paylas&utm_content=174536269"
+                  >emircan@dialogcadde.com</a
+                >
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="info-text">
+                <h4>Çalışma Saatleri</h4>
+                <p>Pazartesi - Cumartesi: 09:00 - 19:00</p>
+              </div>
+            </div>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/emirkaydu.dialogcadde/"
+                target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://wa.me/905432434121" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+          <div class="contact-form">
+            <h3>Bize Ulaşın</h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Adınız Soyadınız</label>
+                <input type="text" id="name" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Adresiniz</label>
+                <input type="email" id="email" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefon Numaranız</label>
+                <input type="tel" id="phone" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="subject">Konu</label>
+                <input type="text" id="subject" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Mesajınız</label>
+                <textarea id="message" class="form-control" required></textarea>
+              </div>
+              <button type="submit" class="btn">Mesaj Gönder</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-container">
+          <div class="footer-col">
+            <h4>Emircan Kaydu</h4>
+            <p>
+              Dialog Cadde Gayrimenkul bünyesinde profesyonel gayrimenkul
+              danışmanlık hizmetleri sunmaktayım. Müşteri memnuniyeti odaklı
+              çalışma prensibiyle İstanbul genelinde hizmet veriyorum.
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/emirkaydu.dialogcadde/"
+                target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Hızlı Linkler</h4>
+            <ul class="footer-links">
+              <li><a href="#home">Anasayfa</a></li>
+              <li><a href="#about">Hakkımda</a></li>
+              <li><a href="#services">Hizmetler</a></li>
+              <li><a href="#properties">Emlak Portföyü</a></li>
+              <li><a href="#contact">İletişim</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Hizmetlerimiz</h4>
+            <ul class="footer-links">
+              <li><a href="#">Konut Satış Pazarlama Ve Kiralama</a></li>
+              <li><a href="#">İşyeri Kiralama</a></li>
+              <li><a href="#">Kat Karşılığı Anlaşma</a></li>
+              <li><a href="#">Yatırım Danışmanlığı</a></li>
+              <li><a href="#">Emlak Yönetimi</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>İletişim</h4>
+            <ul class="footer-contact">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Dialog Cadde Gayrimenkul, İstanbul</span>
+              </li>
+              <li>
+                <i class="fas fa-phone-alt"></i>
+                <span>+90 543 243 41 21</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>emircan@dialogcadde.com</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Pzt-Cmt: 09:00 - 19:00</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2023 Emircan Kaydu - Dialog Cadde Gayrimenkul. Tüm hakları
+            saklıdır.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      document
+        .querySelector(".mobile-menu")
+        .addEventListener("click", function () {
+          document.getElementById("nav-menu").classList.toggle("show");
+        });
+
+      // Smooth Scrolling for Anchor Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            document.getElementById("nav-menu").classList.remove("show");
+          }
+        });
+      });
+
+      // Property Filter
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const propertyCards = document.querySelectorAll(".property-card");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          const filterValue = button.getAttribute("data-filter");
+
+          // Filter properties
+          propertyCards.forEach((card) => {
+            if (
+              filterValue === "all" ||
+              card.getAttribute("data-category") === filterValue
+            ) {
+              card.style.display = "block";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Simple Form Submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+
+          // Here you would typically send the form data to a server
+          // For this example, we'll just show an alert
+          alert(
+            `Teşekkürler ${name}! Mesajınız başarıyla gönderildi. En kısa sürede sizinle iletişime geçeceğim.`
+          );
+
+          // Reset form
+          this.reset();
+        });
+
+      // Change header style on scroll
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(255, 255, 255, 0.95)";
+          header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+        } else {
+          header.style.background = "white";
+          header.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+        }
+      });
+    </script>
+    <script src="properties.js"></script>
+    <script>
+      // İlanları yükle ve göster
+      function loadProperties() {
+        const properties = PropertyManager.getProperties();
+        const container = document.querySelector(".properties-grid");
+
+        // Mevcut ilanları temizle (yenileme için)
+        container.innerHTML = "";
+
+        properties.forEach((property) => {
+          const propertyCard = `
+      <div class="property-card" data-category="${property.type.toLowerCase()}">
+        <div class="property-img">
+          <img src="${property.image}" alt="${property.title}">
+          <span class="property-badge">${property.type}</span>
+        </div>
+        <div class="property-content">
+          <h3>${property.title}</h3>
+          <p class="location">
+            <i class="fas fa-map-marker-alt"></i> ${property.location}
+          </p>
+          <div class="property-features">
+            <div class="feature">
+              <i class="fas fa-bed"></i>
+              <span>${property.rooms}</span>
+            </div>
+            <div class="feature">
+              <i class="fas fa-vector-square"></i>
+              <span>${property.size || "Bilgi Yok"}</span>
+            </div>
+          </div>
+          <div class="property-price">
+            <div class="price">${property.price}</div>
+            <a href="#contact" class="btn">Detaylar</a>
+          </div>
+        </div>
+      </div>
+    `;
+          container.insertAdjacentHTML("beforeend", propertyCard);
+        });
+      }
+
+      // Sayfa yüklendiğinde ilanları yükle
+      document.addEventListener("DOMContentLoaded", loadProperties);
+    </script>
+  </body>
+</html>
